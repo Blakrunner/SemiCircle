@@ -44,7 +44,7 @@ int main()
     semi4.setOutlineThickness(2.f);
     semi4.setOutlineColor({0,0,0});
         
-    SemiCircle semi5(sf::Vector2f(50.f,50.f),18,23);
+    SemiCircle semi5(sf::Vector2f(50.f,75.f));
     semi5.setPosition(400.f,500.f);
     semi5.setOutlineThickness(2.f);
     semi5.setOutlineColor({0,0,0});
