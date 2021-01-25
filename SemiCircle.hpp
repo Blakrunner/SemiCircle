@@ -10,12 +10,14 @@ public:
     virtual ~SemiCircle() {}
     
     void setFillColor(sf::Color color);
+    void setHighlightColor(sf::Color color);
     void setOutlineColor(sf::Color color);
     void setOutlineThickness(float thickness);
     void setRadius(sf::Vector2f radius);
     void setPointCount(std::size_t count);
     void setStartEnd(std::size_t start, std::size_t end);
     sf::Color getFillColor();
+    sf::Color getHighlightColor();
     sf::Color getOutlineColor();
     sf::Vector2f getRadius();
     float getOutlineThickness();
@@ -41,6 +43,7 @@ private:
     sf::FloatRect m_bounds;
     sf::FloatRect m_insideBounds;
     sf::Color m_fillColor;
+    sf::Color m_highlightColor;
     sf::Color m_outlineColor;
     float m_outlineThickness;
     sf::VertexArray m_vertices;
