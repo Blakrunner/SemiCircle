@@ -7,6 +7,7 @@ m_startCount(start),
 m_endCount(end),
 m_pointCount(pointCount),
 m_fillColor(255, 255, 255),
+m_highlightColor(255, 255, 255),
 m_outlineColor(255, 255, 255),
 m_outlineThickness(0),
 m_vertices(sf::TriangleFan),
@@ -19,6 +20,7 @@ m_bounds()
 
 void SemiCircle::setFillColor(sf::Color color)
 {
+    m_highlightColor = color; // Fill with default as solid
     m_fillColor = color;
     updateFillColors();
 }
@@ -26,6 +28,17 @@ void SemiCircle::setFillColor(sf::Color color)
 sf::Color SemiCircle::getFillColor()
 {
     return m_fillColor;
+}
+
+void SemiCircle::setHighlightColor(sf::Color color)
+{
+    m_highlightColor = color;
+    updateFillColors();
+}
+
+sf::Color SemiCircle::getHighlightColor()
+{
+    return m_highlightColor;
 }
 
 void SemiCircle::setOutlineColor(sf::Color color)
@@ -183,7 +196,8 @@ void SemiCircle::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void SemiCircle::updateFillColors()
 {
-    for (std::size_t i = 0; i < m_vertices.getVertexCount(); ++i)
+    m_vertices[0].color = m_highlightColor;
+    for (std::size_t i = 1; i < m_vertices.getVertexCount(); ++i)
         m_vertices[i].color = m_fillColor;
 }
 
