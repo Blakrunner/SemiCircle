@@ -26,29 +26,37 @@ int main()
     
     SemiCircle semi(sf::Vector2f(50.f,50.f));
     semi.setPosition(500.f,500.f);
+    semi.setFillColor({255,0,0});
+    semi.setHighlightColor({255,128,0});
     semi.setOutlineThickness(2.f);
     semi.setOutlineColor({0,0,0});
     
     SemiCircle semi2(sf::Vector2f(50.f,50.f),0,18);
     semi2.setPosition(sf::Vector2f(575.f,500.f));
+    semi2.setFillColor({0,0,255});
+    semi2.setHighlightColor({0,125,255});
     semi2.setOutlineThickness(2.f);
     semi2.setOutlineColor({0,0,0});
     
     SemiCircle semi3(sf::Vector2f(50.f,50.f),9,28);
     semi3.setPosition(700.f,500.f);
+    semi3.setFillColor({0,255,0});
+    semi3.setHighlightColor({255,255,255});
     semi3.setOutlineThickness(2.f);
     semi3.setOutlineColor({0,0,0});
     
     SemiCircle semi4(sf::Vector2f(100.f,100.f),9,19);
     semi4.setPosition(800.f,400.f);
+    semi4.setFillColor({0,200,0});
+    semi4.setHighlightColor({0,255,0});
     semi4.setOutlineThickness(2.f);
     semi4.setOutlineColor({0,0,0});
         
     SemiCircle semi5(sf::Vector2f(50.f,75.f));
     semi5.setPosition(400.f,500.f);
     semi5.setOutlineThickness(2.f);
+    semi5.setFillColor({200,200,200});
     semi5.setOutlineColor({0,0,0});
-    
     
     while(window.isOpen())
     {
@@ -62,6 +70,9 @@ int main()
                     break;
             }
         }
+        
+        if(sf::Touch::isDown(0)) semi5.setHighlightColor({255,255,255});
+        else semi5.setHighlightColor({200,200,200});
         
         window.clear(sf::Color::Green);
         window.draw(text);
