@@ -38,8 +38,8 @@ private:
  
     sf::Vector2f m_radius;
     std::size_t m_pointCount;
-    std::size_t m_startCount;
-    std::size_t m_endCount;
+    std::size_t m_start;
+    std::size_t m_end;
     sf::FloatRect m_bounds;
     sf::FloatRect m_insideBounds;
     sf::Color m_fillColor;
