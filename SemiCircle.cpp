@@ -119,6 +119,7 @@ void SemiCircle::update()
     std::size_t index = 1;
     m_vertices.resize(count+2);
 
+    // updated this section
     if(count < (m_pointCount / 2))
     {
         m_vertices.resize(count+3);
