@@ -120,7 +120,7 @@ void SemiCircle::update()
     m_vertices.resize(count+2);
 
     // updated this section
-    if(count < (m_pointCount / 2))
+    if(count < (m_pointCount / 2) || count > (m_pointCount / 2))
     {
         m_vertices.resize(count+3);
         m_vertices[index].position = m_radius;
