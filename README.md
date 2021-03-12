@@ -17,4 +17,4 @@ or you can fully customize changing values as follows:
 
 SemiCircle semiCircle(sf::Vector2f(size x radius, size y radius), start point, end point, number of points in full circle)
 
-[![image](https://github.com/Blakrunner/SemiCircle/blob/SemiCircle/Screenshot_2.png)]
+[![image](https://github.com/Blakrunner/SemiCircle/blob/SemiCircle/SemiCirclesample.png)]
