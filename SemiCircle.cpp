@@ -3,8 +3,8 @@
 
 SemiCircle::SemiCircle(sf::Vector2f radius, std::size_t start, std::size_t end, std::size_t pointCount) :
 m_radius(radius),
-m_startCount(start),
-m_endCount(end),
+m_start(start),
+m_end(end),
 m_pointCount(pointCount),
 m_fillColor(255, 255, 255),
 m_highlightColor(255, 255, 255),
@@ -65,8 +65,8 @@ sf::Vector2f SemiCircle::getRadius()
 
 void SemiCircle::setStartEnd(std::size_t start, std::size_t end)
 {
-    m_startCount = start;
-    m_endCount = end;
+    m_start = start;
+    m_end = end;
     update();
 }
 
@@ -115,54 +115,20 @@ sf::Vector2f SemiCircle::getPoint(std::size_t index) const
 
 void SemiCircle::update()
 {
-    std::size_t count = m_pointCount;
-    std::size_t index = 1; // start point
-    std::size_t size = m_endCount - m_startCount; // number points
-  //  if(m_startCount != 18 && m_startCount != 0)
-    //size -= 1;
+    std::size_t count = m_end - m_start;
+    std::size_t index = 1;
+    m_vertices.resize(count+2);
 
-    m_vertices.resize(size + 3); // + 3 for center and repeated first point
-
-    if(m_startCount == 0)
+    if(count < (m_pointCount / 2))
     {
-    for (std::size_t i = 0; i < count; ++i)
-    {
-        if(i <= m_endCount)
-        {
-            m_vertices[index].position = getPoint(i);
-            ++index;
-        }
-    }
-    }
-    else if(m_startCount == 18)
-    {
-    // Position
-    for (std::size_t i = 0; i < count; ++i)
-    {
-        if(i == 0) 
-        {
-            m_vertices[index].position = getPoint(i);
-            ++index;
-        }
-        else if(i >= m_startCount && i < m_endCount)
-        {
-            m_vertices[index].position = getPoint(i);
-            ++index;
-        }
-    }
-    }
-    else
-    {
-        m_vertices[1].position = getRadius();
+        m_vertices.resize(count+3);
+        m_vertices[index].position = m_radius;
         ++index;
-    for (std::size_t i = 0; i < count; ++i)
-    {
-        if(i >= m_startCount && i < m_endCount)
-        {
-            m_vertices[index].position = getPoint(i);
-            ++index;
-        }
     }
+    for(std::size_t i = m_start; i < m_end; ++i)
+    {
+        m_vertices[index].position = getPoint(i);
+        ++index;
     }
     m_vertices[index].position = m_vertices[1].position;
 
